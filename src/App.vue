@@ -1,6 +1,20 @@
 <script setup>
 import Counter from "./components/Counter.vue";
+import CounterSettingsForm from "./components/CounterSettingsForm.vue";
+import {ref} from "vue";
 
+let color = ref('')
+let min = ref(0)
+let max = ref(1)
+let step = ref(1)
+
+const setData = (e) => {
+    color.value = e[0]
+    min.value = e[1]
+    max.value = e[2]
+    step.value = e[3]
+    console.log(color.value, min.value, max.value, step.value)
+}
 </script>
 
 <template>
@@ -13,9 +27,14 @@ import Counter from "./components/Counter.vue";
         </a>
     </div>
     <div class="flex flex-col items-center justify-center">
-        <Counter color="bg-red-500" min="0" max="10" step="1"/>
-        <Counter color="bg-yellow-500" min="10" max="100" step="10" />
-        <Counter color="bg-green-500" min="1" max="20" step="2" />
+        <Counter color="red" min="0" max="10" step="1"/>
+        <Counter color="yellow" min="10" max="100" step="10"/>
+        <Counter color="green" min="1" max="20" step="2"/>
+
+<!--        <div class="flex">-->
+<!--            <CounterSettingsForm @sendData="setData($event)" />-->
+<!--            <Counter :color=color.value :min=min.value :max=max.value :step=step.value />-->
+<!--        </div>-->
     </div>
 </template>
 
