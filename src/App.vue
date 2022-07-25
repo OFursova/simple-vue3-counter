@@ -1,6 +1,6 @@
 <script setup>
 import Counter from "./components/Counter.vue";
-import CounterSettingsForm from "./components/CounterSettingsForm.vue";
+// import CounterSettingsForm from "./components/CounterSettingsForm.vue";
 import {ref} from "vue";
 
 let color = ref('')
@@ -27,9 +27,20 @@ const setData = (e) => {
         </a>
     </div>
     <div class="flex flex-col items-center justify-center">
-        <Counter color="red" min="0" max="10" step="1"/>
-        <Counter color="yellow" min="10" max="100" step="10"/>
-        <Counter color="green" min="1" max="20" step="2"/>
+      <!--
+      Todo: при передачі пропсів по дефолту тип буде строка щоб ти не передавала якщо ти хочешь передати число,
+       булеве значення об'єект ... в vue иснує спеціальний синтаксів
+       v-bind:"назва пропсу" або скороченно :"назва пропсу"
+       <Counter color="red" min="0" v-bind:max="10" :step="1"/>
+       color = тип строка
+       min = тип строка
+       max = тип число
+       step = тип число
+       валідація типів також додає варнінги в консолі Invalid prop:
+       -->
+        <Counter color="red" :min="0" :max="10" :step="1"/>
+        <Counter color="yellow" :min="10" :max="100" :step="10"/>
+        <Counter color="green" :min="1" :max="20" :step="2"/>
 
 <!--        <div class="flex">-->
 <!--            <CounterSettingsForm @sendData="setData($event)" />-->
