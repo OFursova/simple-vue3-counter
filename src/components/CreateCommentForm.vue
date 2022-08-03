@@ -41,14 +41,8 @@ export default {
     setup(props, {emit}) {
         const form = ref(initialValues);
 
-        const onAdd = () => {
+        const onSubmit = () => {
             emit('add', form.value)
-        }
-
-        const onSubmit = (e) => {
-            console.log(form.value)
-            emit('add', form.value)
-
             // api.post('/comments', form.value)
         };
 

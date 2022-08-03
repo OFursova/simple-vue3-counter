@@ -13,7 +13,7 @@
                           @delete="onRemoveComment(id)"
             />
         </div>
-        <create-comment-form @add="onAddComment($newComment)"/>
+        <create-comment-form @add="onAddComment"/>
 <!--        <comment-card @add="onAddComment($newComment)" />-->
     </div>
 </template>
@@ -49,14 +49,14 @@ export default {
             }
         };
 
-        const preparedComments = computed(() => comments.value.filter(({name}) => name.length > 30))
+        const preparedComments = computed(() => comments.value.filter(({name}) => name.length > 1))
 
         onMounted(() => {
             fetchComments();
         })
 
         const onRemove = () => {
-            emit('remove')
+            emit('remove', props.id)
         }
 
         const onRemoveComment = (id) => {
@@ -64,8 +64,10 @@ export default {
         }
 
         const onAddComment = (newComment) => {
-            console.log(newComment)
-            // comments.value = comments.value.push({id: 1000, name: 'bla', email: 'bla', comment: 'qwerty'});
+          console.log(newComment)
+            //console.log(newComment)
+            // comments.value.push({id: 1000, name: 'bla', email: 'bla', comment: 'qwerty'});
+          comments.value = [...comments.value, {id: 1000, name: 'bla', email: 'bla', comment: 'qwerty'}]
         }
 
         return {

@@ -16,7 +16,7 @@
                        :body="body"
                        :id="id"
                        :key="id"
-                       @remove="onRemovePost(id)"
+                       @remove="onRemovePost"
             />
         </div>
     </div>
